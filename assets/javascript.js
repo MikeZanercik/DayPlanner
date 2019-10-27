@@ -1,9 +1,12 @@
 var saveBtn = document.querySelectorAll(".btn-primary");
+var timeStamp = document.querySelector("#timeStamp");
 var data;
 
-console.log(moment());
+timeStamp.textContent = moment().format('MMMM Do YYYY, h:mm:ss a');
+
 
 Start();
+UseMomentDisplayColor();
 
 function Start() {
     displayTimeSlots()
@@ -23,25 +26,10 @@ function displayTimeSlots() {
     for (var key in data) {
         var thisRow = document.querySelector("[data-time='" + key + "']")
         SetEventToDom(thisRow, data[key]);
-        UseMomentDisplayColor(thisRow, key)
     }
 }
 
-function UseMomentDisplayColor(element, time) {
-    var textArea = element.querySelector('.form-control')
-    
-    // textArea.style.color = "white";
-    // if (time === "9:00 am") {
-    //     textArea.style.backgroundColor = "red";
-    // }
-    // else if (time === "11:00 am") {
-    //     textArea.style.backgroundColor = "green";
-    // } else {
-    //     textArea.style.color = "black";
-
-    // }
-    // Write moment function to change DOM color
-}
+        
 function SetEventToDom(element, value) {
     var textArea = element.querySelector('.form-control')
     textArea.value = value
@@ -56,4 +44,15 @@ function inStorage() {
         return JSON.parse(storedData)
     }
     return {}
+}
+
+function UseMomentDisplayColor() {
+    timeCurrent = parseFloat(moment().format('h'));
+    timeBox = parseFloat(document.querySelector(".time").textContent);
+    if (timeCurrent > timeBox){
+        alert("working")
+        textArea.setAttribute("style", "background:red")
+    }    
+    console.log(timeCurrent)
+    console.log(timeBox)
 }
