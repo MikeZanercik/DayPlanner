@@ -49,10 +49,16 @@ function inStorage() {
 function UseMomentDisplayColor() {
     timeCurrent = parseFloat(moment().format('h'));
     timeBox = parseFloat(document.querySelector(".time").textContent);
-    if (timeCurrent > timeBox){
-        alert("working")
-        textArea.setAttribute("style", "background:red")
-    }    
-    console.log(timeCurrent)
-    console.log(timeBox)
-}
+
+        if(timeCurrent > ("textArea#id.val")){
+            $("textArea").attr('style', 'background-color:grey');
+        }  
+        if(timeCurrent === ("textArea#id.val")){
+            $("textArea").attr('style', 'background-color:red');
+        }
+        if(timeCurrent < ("textArea#id.val")){
+            $("textArea").attr('style', 'background-color:green');
+        } 
+        // console.log(textArea.id.value)
+    }
+
